@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>TreasureGram</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default nav-bar-static-top text-center">
+      <a href="" alt="TreasureGram">
+        <img src="{% static 'images/logo.png' %}" alt="TreasureGram">
+      </a>
+    </nav>
+    <main class="container" role="main">
+      <section class="treasure panel panel_default container">
+          {%for treasure in treasures %}
+          <section class="panel-heading">
+              <h2 class="panel-title">{{treasure.name}}</h2>
+          </section class="container">
+          <section  class="panel-body">
+            <section class="image">
+              <img src="{{treasure.img_url}}" alt="">
+            </section>
+            <table  class="tb">
+              <tr>
+                <th>
+                  <img class="logo" src="{% static 'images/cp.png' %}" alt="">
+                  Material:
+                </th>
+                <td>{{treasure.material}}</td>
+              </tr>
+              <tr>
+                <th>
+                  <img class="logo" src="{% static 'images/lock.png' %}" alt="">
+                  Value:
+                </th>
+                <td>
+                  {{treasure.material}}
+                  {% if treasure.value > 0 %}
+                      {{treasure.value}}
+                  {% else %}
+                      Unknown
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <img class="logo" src="{% static 'images/pl.png' %}" alt="">
+                  location:
+                </th>
+                <td>{{treasure.location}}</td>
+              </tr>
+            </table>
+
+          </section>
+          {% endfor %}
+      </section>
+    </main>
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+      <section class="treasure panel panel_default container">
+
+          <section class="panel-heading">
+              <h2 class="panel-title">{{treasure.name}}</h2>
+          </section>
+          <section class="container">
+          <section  class="panel-body">
+
+            <section  style="width:30%; float:left;">
+              <img src="{{ treasure.image.url }}" style="width:128px; height;128px;" alt="">
+            </section>
+            <table style="width:65%;">
+              <tr  style="border-bottom:1px solid gray">
+                <th>
+                  <img class="hola" style="width:40px; height;30px;" src="{% static 'images/cp.png' %}" alt="">
+                  Material:
+                </th>
+                <td>{{treasure.material}}</td>
+              </tr>
+              <tr style="border-bottom:1px solid gray">
+                <th>
+                  <img class="hola" style="width:40px; height;40px;" src="{% static 'images/lock.png' %}" alt="">
+                  Value:
+                </th>
+                <td>
+                  {% if treasure.value > 0 %}
+                    {{treasure.value}}
+                  {% else %}
+                    Unknown
+                  {% endif %}
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid gray">
+                <th>
+                  <img class="hola" style="width:40px; height;40px;" src="{% static 'images/pl.png' %}" alt="">
+                  location:
+                </th>
+                <td>{{treasure.location}}</td>
+              </tr>
+            </table>
+
+    </section>
+    </section>
+    <button id="likes" data-id="{{treasure.id}}" type="button"  class="btn btn-mini btn-danger glyphicon glyphicon-heart" name="button">
+
+        {% if treasure.likes > 0 %} {{treasure.likes}} {% endif%}
+    </button>
+    </section>
+{% endblock %}

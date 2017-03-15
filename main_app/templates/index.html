@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+            <div class="row">
+                {% for treasure in treasures %}
+
+                    <div class="col-md-4 flotanteleft">
+                        <section  class="treasure panel panel_default">
+                            <section >
+                                <h2 >{{treasure.name}}</h2>
+                            </section>
+                            <a href="/user/{{treasure.user.username}}">
+                              by:{{treasure.user.username}}
+                            </a>
+                            <section  >
+                                <section >
+                                    <a href="/{{treasure.id}}/">
+                                      <img src="{{treasure.image.url}}" alt="{{treasure.name}}" height="100">
+                                    </a>
+                                </section>
+                                <button id="likes" data-id="{{treasure.id}}" type="button"  class="btn btn-mini btn-danger glyphicon glyphicon-heart" name="button">
+                                    {% if treasure.likes > 0 %} {{treasure.likes}} {% endif%}
+                                </button>
+                             </section>
+                         </section>
+                     </div>
+
+                     {% if forloop.counter|divisibleby:3 %}
+                        </div><div class="row">
+                     {% endif %}
+                 {% endfor %}
+            </div>
+<div class="treasure panel panel_default container">
+
+
+  <form class="" enctype="multipart/form-data" action="post_url/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="" value="Submit">
+  </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+.conta{background-color: gray;min-height: 600px;padding: 20px;}
+.flotanteleft{float: left;  width: 30% ;margin: 0 1.5% 0 1.5%;text-align: center;}
+.panel-default{
+    padding: 30px;
+}
+.col-md-4{
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar{
+  margin-bottom: 0;
+}
+th{
+  height: 40px;
+}
+tr {
+  border-bottom: 1px solid gray;
+}
